@@ -1,15 +1,16 @@
 import React, { use } from 'react';
 import { FaFlag, FaUser } from 'react-icons/fa';
-import Card from '../Card/card';
+import Card from '../Card/Card';
 
-const AvailablePlayers = ({fetchPlayers}) => {
+
+const AvailablePlayers = ({fetchPlayers,coin,setCoin}) => {
     const playerData = use(fetchPlayers);
 
     return (
         <div className='max-w-[1200px] mx-auto grid grid-cols-3 gap-3'>
            {
             playerData.map((player)=>{
-                 return <Card player={player}></Card> 
+                 return <Card player={player} coin={coin} setCoin = {setCoin}></Card> 
             })
            }
         </div>

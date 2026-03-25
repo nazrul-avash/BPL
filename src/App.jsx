@@ -1,5 +1,5 @@
 
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import './App.css'
 import NavBar from './component/NavBar/NavBar'
 import AvailablePlayers from './component/AvailablePlayers/AvailablePlayers';
@@ -10,17 +10,19 @@ const fetchData = async () =>{
   }
 
 function App() {
+    const [coin, setCoin] =useState(50000000000); 
     const fetchPlayers = fetchData();
     const [selectedType,setSelectedType] = useState("available");
+    
     function handleToggle (value){
         setSelectedType(value);
     }
     return (
     <>
-    <NavBar ></NavBar>
-    <ButtonBar type={selectedType} onToggle ={handleToggle}></ButtonBar>
+    <NavBar coin = {coin} ></NavBar>
+    <ButtonBar selectedType={selectedType} onToggle ={handleToggle}></ButtonBar>
     <Suspense fallback={<span className="loading loading-spinner loading-md"></span>}>
-      <AvailablePlayers fetchPlayers = {fetchPlayers}></AvailablePlayers>
+      <AvailablePlayers fetchPlayers = {fetchPlayers} coin={coin} setCoin = {setCoin}></AvailablePlayers>
     </Suspense>
     </>
   )

@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../assets/logo.png'
-const NavBar = () => {
+const NavBar = ({coin}) => {
     return (
         <div>
                <div className="navbar bg-base-100 max-w-[1200px] mx-auto">
@@ -8,7 +8,7 @@ const NavBar = () => {
     <img src={logo}></img>
   </div>
   <div className="flex gap-2 items-center">
-    <span>6000000</span>
+    <span>{coin}</span>
     <span>coin</span>
   </div>
 </div>
